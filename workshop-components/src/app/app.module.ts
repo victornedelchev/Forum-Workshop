@@ -8,10 +8,11 @@ import { CoreModule } from './core/core.module';
 import { MainComponent } from './main/main.component';
 import { ThemesListComponent } from './themes-list/themes-list.component';
 import { PostsListComponent } from './posts-list/posts-list.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent, MainComponent, ThemesListComponent, PostsListComponent],
-  imports: [BrowserModule, AppRoutingModule, CoreModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, CoreModule, HttpClientModule, SharedModule],
   providers: [],
   bootstrap: [AppComponent],
 })
