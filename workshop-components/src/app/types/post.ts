@@ -1,3 +1,4 @@
+import { Theme } from "./theme";
 import { UserId } from "./userId";
 
 export interface Post {
@@ -5,18 +6,7 @@ export interface Post {
     "_id": string,
     "text": string,
     "userId": UserId,
-    "themeId": ThemeId,
-    "created_at": string,
-    "updatedAt": string,
-    "__v": number,
-}
-
-interface ThemeId {
-    "subscribers": string[],
-    "posts": string[],
-    "_id": string,
-    "themeName": string,
-    "userId": string,
+    "themeId": Theme,
     "created_at": string,
     "updatedAt": string,
     "__v": number,
