@@ -17,7 +17,9 @@ export class PostsListComponent implements OnInit {
     this.apiService.getPosts(5).subscribe({
       next: (posts) => {
         this.recentPosts = posts;
-        this.isLoading = false;
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 2500);
       },
       error: (err) => {
         this.isLoading = false;
