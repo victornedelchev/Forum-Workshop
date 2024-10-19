@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   constructor(private userService: UserService, private router: Router) {}
 
-  login(event: Event, email: string, password: string) {
+  login(event: Event, email: string, password: string): void {
     event.preventDefault();
     this.userService.login();
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 }
