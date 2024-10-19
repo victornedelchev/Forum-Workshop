@@ -23,12 +23,12 @@ import { ThemeModule } from './theme/theme.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     CoreModule,
     HttpClientModule,
     SharedModule,
     UserModule,
     ThemeModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
