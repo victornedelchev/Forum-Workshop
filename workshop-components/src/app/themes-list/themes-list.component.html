@@ -4,7 +4,7 @@
   </div>
   <div *ngIf="!isLoading" class="theme-title">
     <div class="welcome-comp">
-      <app-welcome />
+      <app-welcome *ngIf="!isLogged" />
     </div>
     <!-- theme component  -->
     <div *ngFor="let theme of themeList" class="theme-container">
@@ -25,7 +25,15 @@
               </div>
             </div>
             <div class="subscribers">
-              <!-- <button class="subscribe">Subscribe</button> -->
+              <button class="subscribe" *ngIf="isLogged && !isSubscribed(theme)">
+                Subscribe
+              </button>
+              <button
+                class="unsubscribe"
+                *ngIf="isLogged && isSubscribed(theme)"
+              >
+                Unsubscribe
+              </button>
               <p>
                 Subscribers: <span>{{ theme.subscribers.length }}</span>
               </p>
