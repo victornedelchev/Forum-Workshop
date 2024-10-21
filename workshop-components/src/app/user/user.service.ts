@@ -33,6 +33,18 @@ export class UserService {
     localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
   }
 
+  register(): void {
+    this.user = {
+      id: '5fa64ca72183ce1728ff3726',
+      username: 'rozalia',
+      email: 'rozalia@abv.bg',
+      telephone: '123456',
+      password: '654321',
+    };
+
+    localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
+  }
+
   logout(): void {
     this.user = undefined;
     localStorage.removeItem(this.USER_KEY);

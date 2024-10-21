@@ -15,6 +15,7 @@
           name="username"
           id="username"
           placeholder="Johny"
+          #username
         />
       </p>
       <p class="error">Username is required!</p>
@@ -29,6 +30,7 @@
           name="email"
           id="email"
           placeholder="john.doe@gmail.com"
+          #email
         />
       </p>
       <!-- <p class="error">
@@ -59,6 +61,7 @@
           name="password"
           id="password"
           placeholder="******"
+          #password
         />
       </p>
       <!-- <p class="error">
@@ -78,11 +81,12 @@
           name="rePassword"
           id="rePassword"
           placeholder="******"
+          #rePassword
         />
       </p>
       <!-- <p class="error">Repeat Password does not match password!</p> -->
 
-      <button disabled>Create Account</button>
+      <button (click)="register($event, username.value, email.value, password.value)">Create Account</button>
 
       <p class="text-center">
         Have an account?
