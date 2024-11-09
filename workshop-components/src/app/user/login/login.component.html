@@ -1,6 +1,6 @@
 <!-- homepage -->
 <div class="container">
-  <form class="login" action="" method="post">
+  <form class="login" #form="ngForm" (ngSubmit)="login(form)">
     <fieldset>
       <h2>Login Form</h2>
 
@@ -14,13 +14,21 @@
           name="email"
           id="email"
           placeholder="john.doe@gmail.com"
-          #email
+          ngModel
+          #email="ngModel"
+          required
+          [appEmail]="appEmailDomains"
         />
       </p>
-      <p class="error">Email is required!</p>
-      <!-- <p class="error">
-                Email is not valid!
-            </p> -->
+
+      <ng-container *ngIf="email.touched">
+        <p *ngIf="email.errors?.['required']" class="error">
+          Email is required!
+        </p>
+        <p *ngIf="email.errors?.['appEmailValidator']" class="error">
+          Email is not valid!
+        </p>
+      </ng-container>
 
       <p class="field field-icon">
         <label for="password"
@@ -31,17 +39,28 @@
           name="password"
           id="password"
           placeholder="******"
-          #password
+          ngModel
+          #password="ngModel"
+          required
+          minlength="5"
         />
       </p>
-      <!-- <p class="error">
-                Password is required!
-            </p>
-            <p class="error">
-                Password must be at least 4 characters!
-            </p> -->
 
-      <button (click)="login($event, email.value, password.value)">Login</button>
+      <ng-container *ngIf="password.touched">
+        <p *ngIf="password.errors?.['required']" class="error">
+          Password is required!
+        </p>
+        <p *ngIf="password.errors?.['minlength']" class="error">
+          Password must be at least 5 characters!
+        </p>
+      </ng-container>
+
+      <button
+        [disabled]="form.invalid"
+        [style]="{backgroundColor: form.invalid ? 'gray' : '#4ebced'}"
+      >
+        Login
+      </button>
 
       <p class="text-center">
         Have an account?
