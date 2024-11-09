@@ -51,7 +51,7 @@
           Password is required!
         </p>
         <p *ngIf="password.errors?.['minlength']" class="error">
-          Password must be at least 5 characters!
+          Password must be at least {{password.errors?.['minlength']['requiredLength']}} characters!
         </p>
       </ng-container>
 
