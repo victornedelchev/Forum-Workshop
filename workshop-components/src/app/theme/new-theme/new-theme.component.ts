@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
 import { ApiService } from 'src/app/api.service';
@@ -11,10 +12,16 @@ import { ApiService } from 'src/app/api.service';
 export class NewThemeComponent {
   constructor(private apiService: ApiService, private router: Router) {}
 
-  addTheme(event: Event, themeName: string, postText: string): void {
-    event.preventDefault();
+  addTheme(form: NgForm): void {
+    if (form.invalid) {
+      return;
+    }
+
+    const { themeName, postText } = form.value;
+
     console.log(themeName, postText);
     
+
     this.apiService.createTheme(themeName, postText).pipe(
       tap((data) => {
         console.log({ data });

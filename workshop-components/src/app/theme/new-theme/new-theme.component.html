@@ -4,12 +4,29 @@
     <div class="header-background">
       <span>New Theme</span>
     </div>
-    <form>
+    <form #form="ngForm" (ngSubmit)="addTheme(form)">
       <div class="new-theme-title">
         <label for="themeName">Title <span class="red">*</span></label>
-        <input type="text" name="themeName" id="themeName" #inputThemeName/>
-        <p class="error">Theme name is required.</p>
-        <p class="error">Theme name must be at least 5 characters long.</p>
+        <input
+          type="text"
+          name="themeName"
+          id="themeName"
+          required
+          minlength="5"
+          ngModel
+          #inputThemeName="ngModel"
+        />
+
+        <ng-container *ngIf="inputThemeName.touched">
+          <p *ngIf="inputThemeName.errors?.['required']" class="error">
+            Theme name is required.
+          </p>
+          <p *ngIf="inputThemeName.errors?.['minlength']" class="error">
+            Theme name must be at least
+            {{inputThemeName.errors?.['minlength']['requiredLength']}}
+            characters long.
+          </p>
+        </ng-container>
       </div>
       <div class="new-theme-content">
         <label for="postText">Post <span class="red">*</span></label>
@@ -19,14 +36,30 @@
           id="postText"
           rows="8"
           class="height"
-          #inputPostText
+          required
+          minlength="10"
+          ngModel
+          #inputPostText="ngModel"
         ></textarea>
-        <p class="error">The field with your post is required.</p>
-        <p class="error">Post must be at least 10 characters long.</p>
+
+        <ng-container *ngIf="inputPostText.touched">
+          <p *ngIf="inputPostText.errors?.['required']" class="error">
+            The field with your post is required.
+          </p>
+          <p *ngIf="inputPostText.errors?.['minlength']" class="error">
+            Post must be at least 10 characters long.
+          </p>
+        </ng-container>
       </div>
       <div class="new-theme-buttons">
         <button class="cancel" (click)="cancel()">Cancel</button>
-        <button class="public" (click)="addTheme($event, inputThemeName.value, inputPostText.value)">Post</button>
+        <button
+          [disabled]="form.invalid"
+          [style]="{ backgroundColor: form.invalid ? 'gray' : '#4ebced' }"
+          class="public"
+        >
+          Post
+        </button>
       </div>
     </form>
   </div>
