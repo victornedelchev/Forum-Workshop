@@ -5,3 +5,9 @@ export interface User {
   telephone: string;
   password: string;
 }
+
+export interface ProfileDetails {
+  username: string;
+  email: string;
+  tel: string;
+}
