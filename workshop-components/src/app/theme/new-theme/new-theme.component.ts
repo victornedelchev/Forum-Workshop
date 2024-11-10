@@ -19,9 +19,6 @@ export class NewThemeComponent {
 
     const { themeName, postText } = form.value;
 
-    console.log(themeName, postText);
-    
-
     this.apiService.createTheme(themeName, postText).pipe(
       tap((data) => {
         console.log({ data });
