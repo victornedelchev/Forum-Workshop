@@ -10,7 +10,6 @@ import { ThemesListComponent } from './themes-list/themes-list.component';
 import { PostsListComponent } from './posts-list/posts-list.component';
 import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
-import { UserModule } from './user/user.module';
 import { ThemeModule } from './theme/theme.module';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ErrorComponent } from './error/error.component';
@@ -31,7 +30,6 @@ import { appInterceptorProvider } from './app.interceptor';
     CoreModule,
     HttpClientModule,
     SharedModule,
-    UserModule,
     ThemeModule,
     AppRoutingModule,
   ],
