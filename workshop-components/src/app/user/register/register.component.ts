@@ -26,12 +26,15 @@ export class RegisterComponent {
       [Validators.required, appEmailValidator(DEFAULT_EMAIL_DOMAINS)],
     ],
     tel: [''],
-    passGroup: this.fb.group({
-      password: ['', [Validators.required, Validators.minLength(5)]],
-      rePassword: ['', [Validators.required]],
-    }, {
-      validators: [matchPasswordValidator('password', 'rePassword')]
-    }),
+    passGroup: this.fb.group(
+      {
+        password: ['', [Validators.required, Validators.minLength(5)]],
+        rePassword: ['', [Validators.required]],
+      },
+      {
+        validators: [matchPasswordValidator('password', 'rePassword')],
+      }
+    ),
   });
 
   register() {
@@ -39,7 +42,17 @@ export class RegisterComponent {
       return;
     }
 
-    this.userService.register();
-    this.router.navigate(['/']);
+    const {
+      username,
+      email,
+      passGroup: { password, rePassword } = {},
+      tel,
+    } = this.form.value;
+
+    this.userService
+      .register(username!, email!, password!, rePassword!, tel!)
+      .subscribe(() => {
+        this.router.navigate(['/themes']);
+      });
   }
 }
