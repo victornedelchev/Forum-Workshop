@@ -12,7 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { ThemeModule } from './theme/theme.module';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { ErrorComponent } from './error/error.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 import { appInterceptorProvider } from './app.interceptor';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 
@@ -24,7 +24,7 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
     PostsListComponent,
     HomeComponent,
     WelcomeComponent,
-    ErrorComponent,
+    NotFoundComponent,
     AuthenticateComponent,
   ],
   imports: [
