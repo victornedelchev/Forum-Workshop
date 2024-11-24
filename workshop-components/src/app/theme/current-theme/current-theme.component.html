@@ -24,7 +24,7 @@
       <header class="header">
         <p>
           <span>{{ post.userId.username }}</span> posted on
-          <time>{{ post.created_at }}</time>
+          <time>{{ post.created_at | createdAt }}</time>
         </p>
       </header>
       <div class="comment-main">

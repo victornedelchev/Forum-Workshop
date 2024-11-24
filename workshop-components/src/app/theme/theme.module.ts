@@ -4,9 +4,10 @@ import { NewThemeComponent } from './new-theme/new-theme.component';
 import { CurrentThemeComponent } from './current-theme/current-theme.component';
 import { ThemeRoutingModule } from './theme-routing.module';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [NewThemeComponent, CurrentThemeComponent],
-  imports: [CommonModule, ThemeRoutingModule, FormsModule],
+  imports: [CommonModule, ThemeRoutingModule, FormsModule, SharedModule],
 })
 export class ThemeModule {}
