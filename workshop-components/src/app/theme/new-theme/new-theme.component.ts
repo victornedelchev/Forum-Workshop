@@ -19,11 +19,9 @@ export class NewThemeComponent {
 
     const { themeName, postText } = form.value;
 
-    this.apiService.createTheme(themeName, postText).pipe(
-      tap((data) => {
-        console.log({ data });
-      })
-    );
+    this.apiService.createTheme(themeName, postText).subscribe(() => {
+      this.router.navigate(['/themes']);
+    });
   }
 
   cancel() {
