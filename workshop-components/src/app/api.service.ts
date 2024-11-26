@@ -32,4 +32,8 @@ export class ApiService {
 
     return this.http.get<Post[]>(`${apiUrl}/posts${limitFilter}`);
   }
+
+  createComment(id: string, postText: string) {
+    return this.http.post(`/api/themes/${id}`, { postText });
+  }
 }
